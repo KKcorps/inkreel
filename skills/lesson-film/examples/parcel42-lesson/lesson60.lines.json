@@ -1,0 +1,170 @@
+{
+  "title": "parcel 42, the switch",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "bpm": 100,
+  "lead_beats": 1,
+  "breath": 0.3,
+  "tail": 12.0,
+  "lines": [
+    {
+      "id": "open",
+      "text": "Every time you track a parcel, you only want one answer. Where is it right now?",
+      "hold": 0.3
+    },
+    {
+      "id": "hook",
+      "text": "Parcel forty-two just moved house again. In Apache Pinot, the database behind that answer, each house is a row and each street is a segment."
+    },
+    {
+      "id": "kept",
+      "text": "Pinot handles this with upserts. It doesn't overwrite the old row, so every house it ever lived in is still standing.",
+      "say": "Pinot handles this with upsurts. It doesn't overwrite the old row, so every house it ever lived in is still standing."
+    },
+    {
+      "id": "ask",
+      "text": "So how does your query find only the newest one?",
+      "hold": 4.6,
+      "sting": true
+    },
+    {
+      "id": "road",
+      "text": "It starts with the post: every letter for forty-two comes down this one road, to this one post office."
+    },
+    {
+      "id": "part",
+      "text": "That's the partition, and it means one server sees every update for forty-two.",
+      "hold": 0.4
+    },
+    {
+      "id": "book",
+      "text": "Inside, the postmaster keeps an address book, one line per key. In Pinot, that's the primary key map."
+    },
+    {
+      "id": "addr",
+      "text": "Right now, it says forty-two lives on street seven, house twelve, since fourteen oh eight.",
+      "hold": 0.5
+    },
+    {
+      "id": "lands",
+      "text": "Then a new letter lands, postmarked at sixteen thirty."
+    },
+    {
+      "id": "flip",
+      "text": "It's not older than the book, so he flips two switches."
+    },
+    {
+      "id": "swap",
+      "text": "House twelve goes dark, the new house lights up, and the book gets rewritten.",
+      "hold": 0.9
+    },
+    {
+      "id": "bits",
+      "text": "Those switches are the valid doc IDs bitmap, with one bit for every row.",
+      "hold": 0.5
+    },
+    {
+      "id": "snail",
+      "text": "But suppose a letter shows up late. A snail brings one, postmarked at twelve ten. What do you think happens?",
+      "hold": 3.0
+    },
+    {
+      "id": "older",
+      "text": "It's older than sixteen thirty, so nothing flips. The letter is kept, but its window stays dark.",
+      "hold": 0.8
+    },
+    {
+      "id": "query",
+      "text": "That's why your query, this telescope, only reads the lit windows.",
+      "hold": 0.6
+    },
+    {
+      "id": "compact",
+      "text": "And the dark houses? At night, compaction rebuilds the old streets without them.",
+      "hold": 0.5
+    },
+    {
+      "id": "recap",
+      "text": "So that's the whole trick. One road, one book, and two switches.",
+      "speed": 0.95
+    },
+    {
+      "id": "payoff",
+      "text": "Nothing gets overwritten, and for each key, only one window is lit.",
+      "speed": 0.95,
+      "hold": 0.6
+    },
+    {
+      "id": "outro",
+      "text": "So the next time you track a parcel, picture the town behind the answer, and the one window that's lit for you.",
+      "speed": 0.95
+    }
+  ],
+  "terms": {
+    "partition": "partition",
+    "segment": "segment",
+    "primary key map": "primary key map",
+    "validDocIds": "valid doc ids",
+    "compaction": "compaction",
+    "query": "query",
+    "upsert": "upsert"
+  },
+  "things": {
+    "partition": [
+      "road",
+      "post office"
+    ],
+    "segment": "street",
+    "primary key map": "address book",
+    "validDocIds": [
+      "switches",
+      "window"
+    ],
+    "compaction": "crew",
+    "query": "telescope",
+    "upsert": "moved house"
+  },
+  "tech": [
+    "overwrite",
+    "overwritten",
+    "update",
+    "updated",
+    "bit"
+  ],
+  "data": [
+    "delivered",
+    "placed",
+    "packed",
+    "shipped",
+    "late",
+    "letter",
+    "the",
+    "book",
+    "address",
+    "key",
+    "street",
+    "house",
+    "time",
+    "older",
+    "not",
+    "switch",
+    "switches",
+    "stored",
+    "seen",
+    "apache",
+    "pinot",
+    "how",
+    "hide",
+    "old",
+    "rows",
+    "one",
+    "line",
+    "per",
+    "lives",
+    "where",
+    "postmark",
+    "night",
+    "crew",
+    "to"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "inkreel",
+  "description": "Films where every frame and every sound is computed by code.",
+  "owner": {
+    "name": "Kartik Khare",
+    "url": "https://github.com/KKcorps"
+  },
+  "plugins": [
+    {
+      "name": "inkreel",
+      "source": "./",
+      "description": "code-film for any short film, lesson-film for narrated lessons that teach one mechanism, every frame and sound computed by code."
+    }
+  ]
+}

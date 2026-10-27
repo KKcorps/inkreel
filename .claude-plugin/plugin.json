@@ -1,0 +1,13 @@
+{
+  "name": "inkreel",
+  "description": "Films where every frame and every sound is computed by code: code-film for any short film, lesson-film for narrated lessons that teach one mechanism.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Kartik Khare",
+    "url": "https://github.com/KKcorps"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/KKcorps/inkreel",
+  "repository": "https://github.com/KKcorps/inkreel",
+  "keywords": ["video", "film", "animation", "explainer", "lesson", "riso", "generative", "skill"]
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+# build outputs
+*.mp4
+!media/*.mp4
+frames/
+out/
+skills/code-film/assets/examples/parcel42-day/film.html
+skills/lesson-film/examples/parcel42-lesson/lesson60.html
+skills/lesson-film/examples/parcel42-lesson/thumb.html

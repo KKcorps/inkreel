@@ -1,0 +1,212 @@
+1
+00:00:00,630 --> 00:00:02,165
+Every time you track a parcel,
+
+2
+00:00:02,205 --> 00:00:03,853
+you only want one answer.
+
+3
+00:00:03,893 --> 00:00:05,305
+Where is it right now?
+
+4
+00:00:05,730 --> 00:00:08,353
+Parcel 42 just moved house again.
+
+5
+00:00:08,393 --> 00:00:09,615
+In Apache Pinot,
+
+6
+00:00:09,655 --> 00:00:11,590
+the database behind that answer,
+
+7
+00:00:11,630 --> 00:00:14,930
+each house is a row and each street is a segment.
+
+8
+00:00:15,030 --> 00:00:17,190
+Pinot handles this with upserts.
+
+9
+00:00:17,230 --> 00:00:19,090
+It doesn't overwrite the old row,
+
+10
+00:00:19,130 --> 00:00:22,255
+so every house it ever lived in is still standing.
+
+11
+00:00:22,530 --> 00:00:25,380
+So how does your query find only the newest one?
+
+12
+00:00:30,330 --> 00:00:31,877
+It starts with the post:
+
+13
+00:00:31,917 --> 00:00:34,240
+every letter for 42 comes down this one
+
+14
+00:00:34,280 --> 00:00:36,805
+road, to this one post office.
+
+15
+00:00:36,930 --> 00:00:38,290
+That's the partition,
+
+16
+00:00:38,330 --> 00:00:40,615
+and it means one server sees every update
+
+17
+00:00:40,655 --> 00:00:41,855
+for 42.
+
+18
+00:00:42,630 --> 00:00:44,640
+Inside, the postmaster keeps an address
+
+19
+00:00:44,680 --> 00:00:46,653
+book, one line per key.
+
+20
+00:00:46,693 --> 00:00:49,330
+In Pinot, that's the primary key map.
+
+21
+00:00:49,530 --> 00:00:52,265
+Right now, it says 42 lives on street seven,
+
+22
+00:00:52,305 --> 00:00:54,830
+house twelve, since fourteen oh eight.
+
+23
+00:00:55,530 --> 00:00:56,915
+Then a new letter lands,
+
+24
+00:00:56,955 --> 00:00:59,005
+postmarked at sixteen thirty.
+
+25
+00:00:59,130 --> 00:01:00,465
+It's not older than the book,
+
+26
+00:01:00,505 --> 00:01:02,355
+so he flips two switches.
+
+27
+00:01:02,730 --> 00:01:04,090
+House twelve goes dark,
+
+28
+00:01:04,130 --> 00:01:05,340
+the new house lights up,
+
+29
+00:01:05,380 --> 00:01:07,030
+and the book gets rewritten.
+
+30
+00:01:08,130 --> 00:01:10,915
+Those switches are the valid doc IDs bitmap,
+
+31
+00:01:10,955 --> 00:01:12,955
+with one bit for every row.
+
+32
+00:01:13,830 --> 00:01:16,102
+But suppose a letter shows up late.
+
+33
+00:01:16,142 --> 00:01:17,327
+A snail brings one,
+
+34
+00:01:17,367 --> 00:01:19,065
+postmarked at twelve ten.
+
+35
+00:01:19,105 --> 00:01:20,655
+What do you think happens?
+
+36
+00:01:24,030 --> 00:01:25,665
+It's older than sixteen thirty,
+
+37
+00:01:25,705 --> 00:01:27,065
+so nothing flips.
+
+38
+00:01:27,105 --> 00:01:28,190
+The letter is kept,
+
+39
+00:01:28,230 --> 00:01:30,180
+but its window stays dark.
+
+40
+00:01:31,230 --> 00:01:32,140
+That's why your query,
+
+41
+00:01:32,180 --> 00:01:35,205
+this telescope, only reads the lit windows.
+
+42
+00:01:36,030 --> 00:01:37,390
+And the dark houses?
+
+43
+00:01:37,430 --> 00:01:39,828
+At night, compaction rebuilds the old streets
+
+44
+00:01:39,868 --> 00:01:40,955
+without them.
+
+45
+00:01:41,730 --> 00:01:43,003
+So that's the whole trick.
+
+46
+00:01:43,043 --> 00:01:44,203
+One road, one book,
+
+47
+00:01:44,243 --> 00:01:45,605
+and two switches.
+
+48
+00:01:45,930 --> 00:01:47,315
+Nothing gets overwritten,
+
+49
+00:01:47,355 --> 00:01:48,365
+and for each key,
+
+50
+00:01:48,405 --> 00:01:50,280
+only one window is lit.
+
+51
+00:01:51,030 --> 00:01:52,965
+So the next time you track a parcel,
+
+52
+00:01:53,005 --> 00:01:55,140
+picture the town behind the answer,
+
+53
+00:01:55,180 --> 00:01:57,330
+and the one window that's lit for you.
+

@@ -6,6 +6,8 @@ Every frame is drawn by code. Every note of the music is computed. No footage,
 no stock art, no samples, no video model. One HTML page, a seed, and a lot of
 written-down taste.
 
+Inspired by [Kevin Ngo](https://x.com/kevin_t_ngo)'s code-drawn films on X.
+
 ![The switch: a 130 second lesson on how Apache Pinot upserts hide old rows, drawn, voiced and scored in code](media/lesson-film.gif)
 
 *9 seconds of "The switch", a 130 s lesson on how Apache Pinot upserts hide
@@ -158,7 +160,9 @@ If you make something with it, I'd love to see it:
   [alesha-pro](https://github.com/alesha-pro/tools), MIT. See
   [THIRD_PARTY.md](THIRD_PARTY.md).
 - The films in the gallery belong to their makers and are linked, not copied.
-  Kevin Ngo's flipbooks are the ones that started this.
+  This whole project is inspired by [Kevin Ngo (@kevin_t_ngo)](https://x.com/kevin_t_ngo)
+  on X. His code-drawn films are the ones that started it, and six of them
+  open the gallery.
 
 ## License
 
